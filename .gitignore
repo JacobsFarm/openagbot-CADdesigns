@@ -1,0 +1,3 @@
+# smart-panel component models: large third-party/CAD exports, not committed.
+# See smart-panel/panel/parts/README.md for the files panel.scad expects.
+smart-panel/panel/parts/*.stl
