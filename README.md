@@ -3,16 +3,34 @@
 CAD designs for the open-source OpenAgbot robots. Every robot has its own folder with an OpenSCAD design and a
 FreeCAD model.
 
-<img width="2144" height="1984" alt="Robot Bruut" src="https://github.com/user-attachments/assets/1389b9fb-cad2-454f-907a-6cd15e57a0ce" />
+<img src="docs/images/bruut_prototype_field.webp" alt="Robot Bruut prototype in the field with a trailer" width="720">
 
 | Robot | Description | Status |
 | --- | --- | --- |
-| [robot Bruut](robot%20Bruut) | The small standard robot: 750 x 1000 mm chassis, 48 V hub motors, 2WD or 4WD. | Active |
-| [robot Ekko](robot%20Ekko) | A larger variant with bigger hub motors. | Folders prepared, designs follow |
+| [robot Bruut](robot%20Bruut) | The small standard robot: 750 x 1000 mm, 8" 48 V hub motors, 2WD or 4WD. Almost all designs live here. | Active |
+| [robot Ekko](robot%20Ekko) | The larger variant (Agbot XL on the website): 16" 60 V hub motors, 1200 x 1400 mm, 60 mm box beams. | Folders prepared, designs follow |
 
-Related repositories: [Bruut_OpenAgbot](https://github.com/JacobsFarm/Bruut_OpenAgbot) (robot software) and
+| | Bruut 2WD | Bruut 4WD | Ekko 2WD | Ekko 4WD |
+| --- | --- | --- | --- | --- |
+| Hub motor | Quinder 8" 48 V 550 W | Quinder 8" 48 V 550 W | Quinder 16" 60 V 2100 W | Quinder 16" 60 V 2100 W |
+| Driven wheels | 2 (rear) | 4 | 2 (rear) | 4 |
+| Motor power | 1.1 kW | 2.2 kW | 4.2 kW | 8.4 kW |
+| Track x wheelbase | 750 x 1000 mm | 750 x 1000 mm | 1200 x 1400 mm | 1200 x 1400 mm |
+| Tyre (diameter x width) | 430 x 100 mm | 430 x 100 mm | 686 x 198 mm | 686 x 198 mm |
+| Box beam | 40 mm | 40 mm | 60 mm | 60 mm |
+| Kerb weight | 151 kg | 162 kg | 392 kg | 430 kg |
+| Net pulling force (dry grass) | 27 kgf | 82 kgf | 88 kgf | 224 kgf |
+| Top speed | 6 km/h | 6 km/h | 11.4 km/h | 11.4 km/h |
+
+Indicative figures from the [project website](https://jacobsfarm.github.io/Bruut_openagbot_website/), where the four
+versions are compared in full, including prices. Same frame concept and same software for all four.
+
+<img src="docs/images/compare_side.webp" alt="Side view of Bruut and Ekko at the same scale next to a 1.80 m person" width="49%"> <img src="docs/images/compare_top.webp" alt="Top view of Bruut and Ekko, grid lines every 500 mm" width="49%">
+
+Related repositories: [Bruut_OpenAgbot](https://github.com/JacobsFarm/Bruut_OpenAgbot) (robot software),
 [Bruut_OpenAgbot_Implements](https://github.com/JacobsFarm/Bruut_OpenAgbot_Implements) (implements: mower bar,
-dock-weed drill, liquid manure injector).
+dock-weed drill, liquid manure injector, overseeder) and the
+[project website](https://jacobsfarm.github.io/Bruut_openagbot_website/).
 
 ## Repository layout
 
@@ -53,11 +71,15 @@ Volume 2 of the design: a redesign with better alignment and a stronger, more re
 
 <img width="701" height="427" alt="OpenSCAD view 1" src="https://github.com/user-attachments/assets/17ac5686-3153-48f9-91bf-126a4f813c2c" />
 <img width="670" height="468" alt="OpenSCAD view 2" src="https://github.com/user-attachments/assets/33a8f737-128c-4be1-aaf7-83f6ffd132c4" />
-<img width="4080" height="3072" alt="The real robot" src="https://github.com/user-attachments/assets/4c49e457-8ee5-46be-9f41-e7c0ae5c4b18" />
 
 All dimensions come from `config/parameters.scad`, in a 50 mm grid. Chassis width and length are adjustable within
 set ranges (350-850 mm wide, 700-1100 mm long). Parts feed assemblies and assemblies feed the main assemblies. Open
 `main_assembly_2wd.scad` or `main_assembly_4wd.scad` to see the robot.
+
+The chassis is a hole-grid frame of box beams, so track width and wheelbase are set by bolting the beams into a
+different row of holes, without welding. Each wheel module (hub motor, 2 side plates, top plate with slotted holes) is
+laser cut: 8 side plates, 8 axle brackets and 4 top plates for the whole robot. The drawings are in this repo, so any
+sheet metal shop can make them.
 
 Besides the robot itself the folder holds the printable drill templates and bushings, and mounts for a Daheng camera
 and a USB2CAN converter. The hub motor, tyre and reducer STLs are not in the repo: see `imports/notes.txt` for where to
@@ -65,14 +87,20 @@ get them.
 
 Full layout and file descriptions: [robot Bruut/openscad/README.md](robot%20Bruut/openscad/README.md).
 
+### The built robot
+
+<img src="docs/images/bruut_workshop_front.webp" alt="Bruut on four wheel units in the workshop" width="49%"> <img src="docs/images/bruut_workshop_top.webp" alt="The hole pattern in the box beams seen from above" width="49%">
+
+Every part of the design has been built and driven, with the electronics deliberately left visible.
+
 ### FreeCAD
 
 FreeCAD 1.1 model with 2 fixed hub-motor wheels at the rear and 2 steered hub-motor wheels at the front, each with a
 NEMA34 stepper motor on a 5:1 planetary gearbox above it.
 
-<img src="robot%20Bruut/freecad/previews/1_robot_rear_right.png" width="49%"> <img src="robot%20Bruut/freecad/previews/3_front_steering_unit.png" width="49%">
+<img src="docs/images/bruut_freecad_rear_right.webp" alt="FreeCAD model of Bruut" width="49%"> <img src="docs/images/bruut_freecad_steering_unit.webp" alt="Steering head with stepper motor" width="49%">
 
-The scripts can also steer the model with Ackermann angles and render an animation of the robot driving and turning
+Each front wheel turns on its own steering shaft (flange bearings above and below the frame). The scripts can also steer the model with Ackermann angles and render an animation of the robot driving and turning
 (`previews/animation_drive_turn.gif`). Open `run_in_freecad.py` in FreeCAD and run it (F6) to rebuild the model.
 
 Details, assumptions and what is estimated from photos: [robot Bruut/freecad/README.md](robot%20Bruut/freecad/README.md)
@@ -80,8 +108,12 @@ Details, assumptions and what is estimated from photos: [robot Bruut/freecad/REA
 
 ## Robot Ekko
 
-Ekko is a larger variant of Bruut with bigger hub motors. Its `openscad/` and `freecad/` folders are empty for now.
-Start from a copy of the Bruut files and change the dimensions in Ekko's own `parameters.scad` and `agbot_params.py`.
+<img src="docs/images/ekko_freecad_rear_right.webp" alt="FreeCAD model of the larger Ekko" width="60%">
+
+Ekko is the larger variant of Bruut: the same frame concept and software with 16" hub motors (200/70R16 tyres),
+60 mm box beams, a 1200 mm track and a 1400 mm wheelbase. The turning radius is about 40% larger than Bruut's. Its
+`openscad/` and `freecad/` folders are empty for now. Start from a copy of the Bruut files and change the dimensions
+in Ekko's own `parameters.scad` and `agbot_params.py`.
 
 ## Working in this repo
 
