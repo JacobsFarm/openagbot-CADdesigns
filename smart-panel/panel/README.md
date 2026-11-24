@@ -18,7 +18,7 @@ What the panel has to hold, and which model in [`parts/`](parts) represents it:
 | 1 | Innomaker USB2CAN converter, with the CAN bus line (the line itself is not drawn) | `usb2can_innomaker.stl` |
 | 4 | HBS860H stepper motor controllers | `hbs860h_driver.stl` |
 | 2 | Arduino UNO boards | `arduino_uno_r4_wifi.stl` |
-| 2 or 4 | [VESC Classic 100 V](https://www.vesclabs.com/product/vesc-classic-100v/) boards (the layout uses 4, the worst case) | `vesc_classic.stl` |
+| 2 or 4 | [VESC Classic 100 V](https://www.vesclabs.com/product/vesc-classic-100v/) boards (the layout uses 4, the worst case) | `vesc/vesc_classic.stl` |
 | 1 | RTK board (ZED-X20D) | `simpleRTK2b_standin_x20d.stl`, a stand-in |
 | 1 | Main switch, mounted in the panel | `hoofdschakelaar_aan_uit.stl`, a guess |
 
