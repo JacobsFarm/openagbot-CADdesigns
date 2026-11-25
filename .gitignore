@@ -1,3 +1,8 @@
 # smart-panel component models: large third-party/CAD exports, not committed.
 # See smart-panel/panel/parts/README.md for the files panel.scad expects.
 smart-panel/panel/parts/**/*.stl
+
+# usb2can_innomaker: only the clamp model and its README are committed.
+smart-panel/panel/parts/usb2can_innomaker/*
+!smart-panel/panel/parts/usb2can_innomaker/README.md
+!smart-panel/panel/parts/usb2can_innomaker/usb2can_innomaker_clamp.scad

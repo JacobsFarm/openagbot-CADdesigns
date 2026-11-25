@@ -65,6 +65,11 @@ s = mirror_holes ? -1 : 1;
 m3_holes = [[-s*vesc_hole_dy/2,  vesc_hole_dx/2],
             [ s*vesc_hole_dy/2, -vesc_hole_dx/2]];
 
+// Voor andere bestanden die deze file met 'use <...>' laden (bv. ../../panel.scad)
+function vesc_plate_size()    = [P_W, P_L, plate_t];
+function vesc_plate_vesc_x()  = vesc_x;
+function vesc_plate_m5()      = [for (x = m5_cols, y = m5_rows) [x, y]];
+
 echo(str("Plaat: ", P_W, " x ", P_L, " x ", plate_t, " mm, VESC ligt op z = ", top_z));
 
 // --- Modules ---
