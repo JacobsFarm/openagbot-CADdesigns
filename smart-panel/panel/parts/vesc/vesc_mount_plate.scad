@@ -16,11 +16,11 @@ mirror_holes = false;   // true = de andere diagonaal (als jouw VESC gespiegeld 
 vesc_clearance = 1;     // Speling rondom de VESC
 
 // --- Plate ---
-plate_t   = 8;          // Dikte van de plaat (dik genoeg voor de heat insert, VESC ligt plat)
+plate_t   = 10;         // Dikte van de plaat (dik genoeg voor de heat insert, VESC ligt plat)
 n_vesc     = 4;         // Aantal VESC's naast elkaar
 m5_strip   = 20;        // Breedte van een strook met M5 gaten (tussen VESC 1-2 en 3-4)
 small_gap  = 6;         // Breedte van een strook zonder gaten (tussen VESC 2-3)
-side_margin = 5;        // Rand links en rechts (zonder gaten)
+side_margin = 2;        // Rand links en rechts (zonder gaten)
 end_margin = 8;         // Rand boven en onder de VESC
 R = 4;                  // Hoekradius van de plaat
 
@@ -32,7 +32,12 @@ washer_depth = 1.3;     // Diepte van de verzinking voor de ring
 m5_edge    = 12;        // Afstand van M5 gat tot boven-/onderrand
 
 // --- M3 heat inserts (VESC op plaat) ---
-insert_D   = 4.1;       // Gat voor de M3 heat insert
+insert_D   = 4;       // Gat voor de M3 heat insert
+
+// --- M4 heat inserts (later iets bovenop monteren) ---
+// Zitten in dezelfde stroken als de M5 gaten (tussen VESC 1-2 en 3-4)
+m4_insert_D = 4.8;      // Gat voor de M4 heat insert (0 = geen)
+m4_y = [-25, 0, 25];    // Posities in de lengte, vanaf het midden van de plaat
 
 // --- Resolution ---
 $fn = 60;
@@ -75,6 +80,12 @@ module mount_plate() {
         for (vx = vesc_x, h = m3_holes)
             translate([vx + h[0], h[1], -1])
                 cylinder(d=insert_D, h=plate_t + 2);
+
+        // M4 heat insert gaten (doorlopend), in het midden van elke M5 strook
+        if (m4_insert_D > 0)
+            for (x = m5_cols, y = m4_y)
+                translate([x, y, -1])
+                    cylinder(d=m4_insert_D, h=plate_t + 2);
 
         // M5 doorgaande gaten met verzinking voor de ring
         for (x = m5_cols, y = m5_rows)

@@ -21,10 +21,10 @@ three wires that stick out of one short end.
 
 ## Printed brackets
 
-- `vesc/vesc_mount_plate.scad`: plate for 4 VESC Classics side by side (254 x 117.8 x 8 mm, `n_vesc` sets the
+- `vesc/vesc_mount_plate.scad`: plate for 4 VESC Classics side by side (248 x 117.8 x 10 mm, `n_vesc` sets the
   count). Bolts to the cabinet backplate with 4x M5, two between VESC 1-2 and two between VESC 3-4, each with a
-  Ø16 x 1.3 mm recess for the washer. Each VESC lies flat on it and screws on with 2x M3 into heat inserts (Ø4.1
-  holes straight through). The hole pattern (93.7 x 41.4 mm, diagonal corners) is measured from `vesc_classic.stl`.
+  Ø16 x 1.3 mm recess for the washer. Each VESC lies flat on it and screws on with 2x M3 into heat inserts (Ø4.0
+  holes straight through). The two M5 strips also have 3x M4 insert holes each (Ø4.8, at y = -25, 0, 25) to mount something on top later. The hole pattern (93.7 x 41.4 mm, diagonal corners) is measured from `vesc_classic.stl`.
   Set `show_vesc = true` to preview the VESCs on it in OpenSCAD.
 - `vesc/vesc_hole_test.scad`: 3 mm test frame with the two M3 insert holes of one VESC, to check the hole
   pattern and insert fit before printing the full plate (7.6 cm3).
