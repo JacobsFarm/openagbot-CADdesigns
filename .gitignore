@@ -1,8 +1,18 @@
-# smart-panel component models: large third-party/CAD exports, not committed.
-# See smart-panel/panel/parts/README.md for the files panel.scad expects.
-smart-panel/panel/parts/**/*.stl
+# parts folders: only our own sources and their READMEs are committed:
+#   *.scad      OpenSCAD models
+#   make_*.py   FreeCAD scripts that build a part
+#   README.md   what the part is and which local files it needs
+# Manufacturer / third-party models (boards, drivers, cases, Printables downloads) and exported STL/STEP files stay
+# local. Each README says where to get them or how to rebuild them.
+smart-panel/panel/parts/**
+!smart-panel/panel/parts/**/
+!smart-panel/panel/parts/**/*.scad
+!smart-panel/panel/parts/**/make_*.py
+!smart-panel/panel/parts/**/README.md
 
-# usb2can_innomaker: only the clamp model and its README are committed.
-smart-panel/panel/parts/usb2can_innomaker/*
-!smart-panel/panel/parts/usb2can_innomaker/README.md
-!smart-panel/panel/parts/usb2can_innomaker/usb2can_innomaker_clamp.scad
+robot Bruut/openscad/parts/**
+!robot Bruut/openscad/parts/**/
+!robot Bruut/openscad/parts/**/*.scad
+!robot Bruut/openscad/parts/**/README.md
+# Own steering motor plate (HiCAD export), the reference the FreeCAD model is rebuilt from.
+!robot Bruut/openscad/parts/PLOATIE 2.STP
