@@ -30,6 +30,16 @@ three wires that stick out of one short end.
   holes straight through). The two M5 strips also have 3x M4 insert holes each (Ø4.8, at y = -25, 0, 25) to mount something on top later. The hole pattern (93.7 x 41.4 mm, diagonal corners) is measured from `vesc_classic.stl`.
   Set `show_vesc = true` to preview the VESCs on it in OpenSCAD.
 
+- `vesc/make_vesc_din_clip.py`: one-piece DIN rail holder for one VESC Classic (106.8 x 25 x 53.5 mm, 63.2 cm3),
+  built with FreeCAD from the profile of `Din rail clip/dins_clip_m4_insert.step`. The VESC stands with its length
+  across the rail (vertical on the panel, wires up or down) and lies flat on a 6 mm plate on top of the clip. It
+  screws on with 2x M3 into heat inserts (Ø4.0 holes straight through the plate, drilled on both diagonals so either
+  hole layout fits). A 3 x 3 mm rim at both short ends holds the VESC between them with 0.5 mm play per side
+  (100.8 mm inside); the wires leave the case 1.15 mm above the rim. Along the rail the holder is 3 mm wider than the
+  VESC on each side (53.5 mm), so VESCs on neighbouring holders sit 6 mm apart. The script checks the fit against
+  `vesc/vesc_classic.stl` when it is there. See `vesc/README.md` for both VESC versions, the files and how to
+  rebuild them.
+
 - `Jetson orin nano 8gb dev kit/jetson_orin_nano_din_carrier.scad`: base + vented lid for the Jetson Orin Nano dev
   kit (127 x 114.5 x 48.9 mm), with an air chamber under the PCB that vents at the port side. A 52 mm wide DIN clip (`make_jetson_din_clip.py`) bolts under the base with 4x M4x10,
   the lid (or a simpler U-shaped clamp bracket without hood) bolts on with 4x M4x10 and clamps the dev kit by its foot rim. See the README in that folder.
